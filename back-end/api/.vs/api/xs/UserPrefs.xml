@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{9E7D15BB-6162-4FE5-B9B2-16BF472D9A78}|https">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+    <Files>
+      <File FileName="DBContext/DBContext.cs" Line="9" Column="38" />
+      <File FileName="Program.cs" Line="43" Column="11" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="api" expanded="True">
+            <Node name="api" expanded="True">
+              <Node name="AuthService" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="DBContext" expanded="True" />
+              <Node name="Entities" expanded="True" />
+              <Node name="Models " expanded="True" />
+              <Node name="Outcomes" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.api PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>
