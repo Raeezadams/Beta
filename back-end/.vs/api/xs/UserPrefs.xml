@@ -1,18 +1,28 @@
 ﻿<Properties StartupConfiguration="{A04F2369-6F95-48BC-9DCD-31838324D087}|https">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.api PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" FirstBuild="True" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="api/DBContext/DBContext.cs">
+    <Files>
+      <File FileName="api/Properties/launchSettings.json" Line="1" Column="1" IsPinned="True" />
+      <File FileName="api/Entities/User.cs" />
+      <File FileName="api/DBContext/DBContext.cs" Line="27" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="api" expanded="True" selected="True" />
+          <Node name="api" expanded="True" selected="True">
+            <Node name="api" expanded="True">
+              <Node name="DBContext" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.api PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

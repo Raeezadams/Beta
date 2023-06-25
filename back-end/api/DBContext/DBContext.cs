@@ -14,12 +14,13 @@ namespace api.Context
         {
         }
 
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
             modelBuilder.Entity<User>().ToTable("user");
             }
-
+       
     }
 }
 

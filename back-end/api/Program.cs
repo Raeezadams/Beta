@@ -22,7 +22,7 @@ builder.Services.AddScoped<IAthenticationService, AuthenticationService>();
 var app = builder.Build();
 
     var connectionString = "your_connection_string";
-builder.Services.AddDbContext<APIDbContext>(options => options.UseSqlServer(connectionString));
+//builder.Services.AddDbContext<APIDbContext>(options => options.UseSqlServer(connectionString));
 
 
 // Configure the HTTP request pipeline.

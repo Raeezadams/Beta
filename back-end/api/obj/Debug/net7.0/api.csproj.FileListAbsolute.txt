@@ -31,3 +31,13 @@
 /Volumes/SSD/VS code/beta/api/api/obj/Debug/net7.0/api.pdb
 /Volumes/SSD/VS code/beta/api/api/obj/Debug/net7.0/api.genruntimeconfig.cache
 /Volumes/SSD/VS code/beta/api/api/obj/Debug/net7.0/ref/api.dll
+/Users/raeezadams/Desktop/SmartService/back-end/api/obj/Debug/net7.0/api.csproj.AssemblyReference.cache
+/Users/raeezadams/Desktop/SmartService/back-end/api/obj/Debug/net7.0/api.GeneratedMSBuildEditorConfig.editorconfig
+/Users/raeezadams/Desktop/SmartService/back-end/api/obj/Debug/net7.0/api.AssemblyInfoInputs.cache
+/Users/raeezadams/Desktop/SmartService/back-end/api/obj/Debug/net7.0/api.AssemblyInfo.cs
+/Users/raeezadams/Desktop/SmartService/back-end/api/obj/Debug/net7.0/api.csproj.CoreCompileInputs.cache
+/Users/raeezadams/Desktop/SmartService/back-end/api/obj/Debug/net7.0/api.MvcApplicationPartsAssemblyInfo.cs
+/Users/raeezadams/Desktop/SmartService/back-end/api/obj/Debug/net7.0/api.MvcApplicationPartsAssemblyInfo.cache
+/Users/raeezadams/Desktop/SmartService/back-end/api/obj/Debug/net7.0/api.dll
+/Users/raeezadams/Desktop/SmartService/back-end/api/obj/Debug/net7.0/refint/api.dll
+/Users/raeezadams/Desktop/SmartService/back-end/api/obj/Debug/net7.0/api.pdb
