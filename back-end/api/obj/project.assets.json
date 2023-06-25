@@ -1033,11 +1033,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/raeezadams/Desktop/SmartService/api/api/api.csproj",
+      "projectUniqueName": "/Users/raeezadams/Desktop/SmartService/back-end/api/api.csproj",
       "projectName": "api",
-      "projectPath": "/Users/raeezadams/Desktop/SmartService/api/api/api.csproj",
+      "projectPath": "/Users/raeezadams/Desktop/SmartService/back-end/api/api.csproj",
       "packagesPath": "/Users/raeezadams/.nuget/packages/",
-      "outputPath": "/Users/raeezadams/Desktop/SmartService/api/api/obj/",
+      "outputPath": "/Users/raeezadams/Desktop/SmartService/back-end/api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/raeezadams/.nuget/NuGet/NuGet.Config"
