@@ -19,11 +19,22 @@ public class AuthentificationController : ControllerBase
         _athenticationService = athenticationService;
     }
 
+    
+    [HttpGet]
+    public List<Entities.User> GetUsers()
+    {
+        return _athenticationService.getUserInfo();
+    }
+    
+
+
+
     [HttpPost("signup")]
-    public User Post(User user)
+    public UserModel Post(UserModel user)
     {
         return _athenticationService.signup(user);
     }
 }
+
 
 

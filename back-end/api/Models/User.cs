@@ -2,7 +2,7 @@
 namespace api.Models
 {
 
-    public class User
+    public class UserModel
     {
 
         public string UserName { get; set; }

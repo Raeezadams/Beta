@@ -18,9 +18,13 @@ namespace api.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<User>().ToTable("user");
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("User", "ss");
+            });
             }
-       
+
+      
     }
 }
 

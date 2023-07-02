@@ -1,20 +1,31 @@
 ﻿using System;
+using api.Context;
 using api.Models;
 
 namespace api.AuthService
 {
 	public class AuthenticationService : IAthenticationService
 	{
-		public AuthenticationService()
+		private readonly APIDbContext _aPIDbContext;
+        public AuthenticationService(APIDbContext aPIDbContext)
 		{
-		}
-		public User signup(User user)
-		{
-			
-			return user;
-		}
+			_aPIDbContext = aPIDbContext;
+
+        }
 		
-	}
+		public List<Entities.User> getUserInfo()
+		{
+
+			return _aPIDbContext.Users.ToList();
+		}
+
+        public UserModel signup(UserModel user)
+        {
+
+            return user;
+        }
+
+    }
 }
  
   

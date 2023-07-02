@@ -1,5 +1,6 @@
 ﻿using api.AuthService;
 using api.Context;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,11 +20,11 @@ builder.Services.AddCors(options =>
     });
 });
 builder.Services.AddScoped<IAthenticationService, AuthenticationService>();
+
+    var connectionString = "Data Source=mssql-103808-0.cloudclusters.net,10003;Initial Catalog=SmartService;Persist Security Info=True;User ID=admin;Password=Autospares@2022;TrustServerCertificate=True";
+builder.Services.AddDbContext<APIDbContext>(options => options.UseSqlServer(connectionString));
+
 var app = builder.Build();
-
-    var connectionString = "your_connection_string";
-//builder.Services.AddDbContext<APIDbContext>(options => options.UseSqlServer(connectionString));
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
