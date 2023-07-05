@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import useApi from '../../Shared/useapi';
 import { User, signup as signupApi } from '../../API/Authentification/Index';
-
+import {toast} from "react-toastify";
+import HomePage from '../../HomePage/HomePage';
 interface SignUpProps {
   // Add any necessary props here
 }
@@ -13,7 +14,7 @@ const SignupPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [cellNumber,setCellNumber]=useState('')
   const [username, setUsername] = useState('');
-
+  const navigate = useNavigate();
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
@@ -40,14 +41,16 @@ const SignupPage: React.FC = () => {
       userName: username,
       email: email,
       password: password,
-      cellNumber: parseInt(cellNumber)
+      phoneNumber: (cellNumber)
   }),
     defer: true,
     onSuccess: (user: User ) => {
-      console.info('success', user)
+      navigate("/home")
+
+      toast.success("You have signed up sucessfully")
 
     },
-    onError: (error: any) => console.error(error.message)
+    onError: (error: any) => toast.error(error.response.data.errorMessages[0])
 }, [])
 
   return (

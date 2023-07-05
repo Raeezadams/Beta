@@ -1,11 +1,12 @@
 ﻿using System;
 using api.Models;
+using SmartAutoSpares.Outcomes.Results;
 
 namespace api.AuthService
 {
 	public interface IAthenticationService
 	{
-		UserModel signup(UserModel user);
+        IOutcome<UserModel> signup(UserModel user);
 		List<Entities.User> getUserInfo();
 
     }

@@ -4,25 +4,26 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AuthService/AuthenticationService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Entities/User.cs">
     <Files>
-      <File FileName="DBContext/DBContext.cs" Line="11" Column="24" />
-      <File FileName="Program.cs" Line="26" Column="1" />
-      <File FileName="Controllers/AuthentificationController.cs" Line="26" Column="6" />
-      <File FileName="AuthService/AuthenticationService.cs" Line="25" Column="6" />
-      <File FileName="AuthService/IAthenticationService.cs" Line="14" Column="1" />
+      <File FileName="DBContext/DBContext.cs" Line="26" Column="1" />
+      <File FileName="Program.cs" Line="24" Column="202" />
+      <File FileName="Controllers/AuthentificationController.cs" Line="26" Column="42" />
+      <File FileName="AuthService/AuthenticationService.cs" Line="19" Column="1" />
+      <File FileName="AuthService/IAthenticationService.cs" Line="8" Column="7" />
+      <File FileName="Entities/User.cs" Line="16" Column="1" />
+      <File FileName="Models/User.cs" Line="5" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="api" expanded="True">
             <Node name="api" expanded="True">
-              <Node name="AuthService" expanded="True">
-                <Node name="AuthenticationService.cs" selected="True" />
-              </Node>
+              <Node name="AuthService" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="DBContext" expanded="True" />
               <Node name="Entities" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Outcomes" expanded="True" />
               <Node name="Properties" expanded="True" />
             </Node>

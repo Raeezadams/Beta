@@ -1,6 +1,8 @@
 ﻿using api.AuthService;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
+using SmartAutoSpares.Outcomes;
+using SmartAutoSpares.Outcomes.Results;
 
 namespace api.Controllers;
 
@@ -11,12 +13,14 @@ public class AuthentificationController : ControllerBase
 
     private readonly ILogger<AuthentificationController> _logger;
     private readonly IAthenticationService _athenticationService;
+    private readonly IHandler _handler;
 
 
-    public AuthentificationController(ILogger<AuthentificationController> logger, IAthenticationService athenticationService)
+    public AuthentificationController(ILogger<AuthentificationController> logger, IAthenticationService athenticationService, IHandler handler)
     {
         _logger = logger;
         _athenticationService = athenticationService;
+        _handler = handler;
     }
 
     
@@ -30,9 +34,9 @@ public class AuthentificationController : ControllerBase
 
 
     [HttpPost("signup")]
-    public UserModel Post(UserModel user)
+    public ActionResult<IOutcome<UserModel>> Post(UserModel user)
     {
-        return _athenticationService.signup(user);
+        return _handler.HandleOutcome(_athenticationService.signup(user));
     }
 }
 
