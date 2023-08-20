@@ -3641,25 +3641,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/raeezadams/.nuget/packages/": {}
+    "C:\\Users\\raeez\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/raeezadams/Desktop/SmartService/back-end/api/api.csproj",
+      "projectUniqueName": "C:\\Users\\raeez\\OneDrive\\Desktop\\Coding\\Git Hub\\Beta\\back-end\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "/Users/raeezadams/Desktop/SmartService/back-end/api/api.csproj",
-      "packagesPath": "/Users/raeezadams/.nuget/packages/",
-      "outputPath": "/Users/raeezadams/Desktop/SmartService/back-end/api/obj/",
+      "projectPath": "C:\\Users\\raeez\\OneDrive\\Desktop\\Coding\\Git Hub\\Beta\\back-end\\api\\api.csproj",
+      "packagesPath": "C:\\Users\\raeez\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\raeez\\OneDrive\\Desktop\\Coding\\Git Hub\\Beta\\back-end\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/raeezadams/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\raeez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/sdk/7.0.302/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3710,7 +3711,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

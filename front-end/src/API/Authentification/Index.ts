@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const apiBaseUrl: string = "https://localhost:7140";
+export const apiBaseUrl: string = "http://localhost:7140";
 
 export type User = {
     userName: string;
@@ -9,5 +9,5 @@ export type User = {
     email: string;
 }
 
-export const signup = (user:User) => axios.post(`https://localhost:7140/Authentification/signup`, user).then(response => response.data)
+export const signup = (user:User) => axios.post(`http://localhost:7140/Authentification/signup`, user).then(response => response.data)
 
