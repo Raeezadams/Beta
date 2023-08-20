@@ -1,29 +1,195 @@
 .login-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
+  width: 100%;
+  display: flex;
+  padding: var(--dl-space-space-sixunits);
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.login-container1 {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  min-height: 80vh;
+  align-items: flex-start;
+}
+.login-container2 {
+  flex: 0 0 auto;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  min-height: 80vh;
+  align-items: flex-start;
+  background-size: cover;
+  background-image: url("https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDN8fGRlbGl2ZXJ5fGVufDB8fHx8MTY5MjUyODU3OHww&ixlib=rb-4.0.3&h=1500");
+  background-position: center;
+}
+.login-container3 {
+  flex: 0 0 auto;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  min-height: 80vh;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.login-text {
+  color: var(--dl-color-scheme-brown);
+  width: 100%;
+  text-align: center;
+}
+.login-text1 {
+  width: 100%;
+  font-size: 15px;
+  font-style: normal;
+  margin-top: 10vh;
+  text-align: center;
+  font-weight: 100;
+}
+.login-container4 {
+  flex: 0 0 auto;
+  width: 80%;
+  height: 45vh;
+  display: flex;
+  align-self: center;
+  margin-top: 10vh;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login-textinput {
+  width: 94%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.3s;
+  border-color: #ffffff;
+}
+.login-textinput:hover {
+  cursor: pointer;
+}
+.login-textinput1 {
+  color: #000000;
+  width: 94%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.3s;
+  border-color: #ffffff;
+}
+.login-textinput1:hover {
+  cursor: pointer;
+}
+.login-button {
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+.login-button:hover {
+  cursor: pointer;
+}
+.login-container5 {
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: flex-start;
+}
+.login-text2 {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
+}
+.login-text2:hover {
+  color: var(--dl-color-scheme-brown);
+  cursor: pointer;
+}
+.login-text3 {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  transition: 0.3s;
+}
+.login-text3:hover {
+  color: var(--dl-color-scheme-brown);
+  cursor: pointer;
+}
+.login-profile {
+  width: 100%;
+  margin-top: 5vh;
+  text-align: center;
+}
+.login-navlink {
+  font-style: normal;
+  transition: 0.3s;
+  font-weight: 600;
+  margin-left: var(--dl-space-space-halfunit);
+  text-decoration: none;
+}
+.login-navlink:hover {
+  color: var(--dl-color-scheme-brown);
+  cursor: pointer;
+  font-weight: bold;
+}
+.login-profile1 {
+  display: flex;
+  align-self: center;
+  margin-top: 5vh;
+  align-items: center;
+}
+.login-image {
+  width: var(--dl-size-size-small);
+  height: var(--dl-size-size-small);
+  object-fit: cover;
+  border-radius: var(--dl-radius-radius-round);
+}
+.login-text4 {
+  font-style: normal;
+  font-weight: 600;
+  margin-left: var(--dl-space-space-halfunit);
+}
+@media(max-width: 991px) {
+  .login-container1 {
+    width: 100%;
   }
-  
-  h1 {
-    text-align: center;
+  .login-text1 {
+    font-size: 20px;
   }
-  
-  form {
+  .login-textinput1 {
+    width: 90%;
+  }
+  .login-textinput {
+    width: 90%;
+  }
+}
+@media(max-width: 767px) {
+  .login-container2 {
+    display: none;
+  }
+  .login-container3 {
+    width: 100%;
+  }
+}
+@media(max-width: 479px) {
+  .login-container {
     display: flex;
-    flex-direction: column;
+    padding: var(--dl-space-space-twounits);
+    justify-content: center;
   }
-  
-  label {
-    margin-bottom: 5px;
+  .login-container2 {
+    display: none;
   }
-  
-  input {
-    padding: 10px;
-    margin-bottom: 10px;
+  .login-container3 {
+    width: 100%;
+    align-self: center;
   }
-  
-  button {
-    padding: 10px;
+  .login-navlink {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
   }
-  
-  
+  .login-text4 {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+  }
+}
