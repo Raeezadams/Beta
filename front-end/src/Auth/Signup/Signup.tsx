@@ -1,15 +1,15 @@
+import './signup.css'
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './SignUp.css';
 import useApi from '../../Shared/useapi';
 import { User, signup as signupApi } from '../../API/Authentification/Index';
 import {toast} from "react-toastify";
-import HomePage from '../../HomePage/HomePage';
-interface SignUpProps {
-  // Add any necessary props here
-}
+import { Helmet } from 'react-helmet'
 
-const SignupPage: React.FC = () => {
+
+
+const Signup: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cellNumber,setCellNumber]=useState('')
@@ -50,59 +50,84 @@ const SignupPage: React.FC = () => {
       toast.success("You have signed up sucessfully")
 
     },
-    onError: (error: any) => toast.error(error.response.data.errorMessages[0])
+    onError: (e: any) => {
+      if(e && e.data && e.data.errorMessages)
+      {
+       e.data.errorMessages.forEach((message:string) => {
+         toast.error(message);
+        });
+      } 
+      else toast.error("Network Error")
+     }
 }, [])
 
   return (
     <div className="signup-container">
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-
-      <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={handleUsernameChange}
-          required
-        />
-
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
-          required
-        />
-
-        <label htmlFor="cell-number">Cell Number</label>
-        <input
-          type="number"
-          id="cell-number"
-          value={cellNumber}
-          onChange={handleCellNumberChange}
-          required
-        />
-
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={handlePasswordChange}
-          required
-        />
-
-        <button type="submit" onClick={() => signupHook.execute()}>{signupHook.inProgress ? 'in progress' : 'Sign Up'} </button>
-      </form>
-
-      <p>
-        Already have an account?{' '}
-        <Link to="/login">Login</Link>
-      </p>
+      <Helmet>
+        <title>Signup - Target Online Pty Ltd</title>
+        <meta property="og:title" content="Signup - Target Online Pty Ltd" />
+      </Helmet>
+      <div className="signup-container1">
+        <div className="signup-container2"></div>
+        <div className="signup-container3">
+          <h1 className="signup-text">Create Account</h1>
+          <h1 className="signup-text1">Welcome to Smart Delivery</h1>
+          <div className="signup-container4">
+            <div className="signup-container5">
+              <input
+                type="text"
+                required
+                autoFocus
+                placeholder="User name"
+                className="signup-textinput input"
+                value={username}
+                onChange={handleUsernameChange}
+              />
+              <input
+                type="email"
+                required
+                autoFocus
+                placeholder="Email"
+                className="signup-textinput3 input"
+                value={email}
+                onChange={handleEmailChange}
+              />
+              <input
+                type="password"
+                required
+                autoFocus
+                placeholder="Password"
+                className="signup-textinput4 input"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              <button type="button" autoFocus className="signup-button button" onClick={() => signupHook.execute()}>
+                {signupHook.inProgress ? 'in progress' : 'Sign Up'}
+              </button>
+            </div>
+            <div className="signup-container6">
+              <Link to="/" className="signup-navlink">
+                Login
+              </Link>
+            </div>
+            <Link to="/home" className="signup-navlink1">
+              <div className="signup-profile">
+                <span className="signup-text2">Home</span>
+              </div>
+            </Link>
+            <div className="login-profile1">
+              <img
+                alt="profile"
+                src= {require("../../Assets/delivery-man-riding-red-scooter-illustration_9845-14-200h.jpg")}
+                className="login-image"
+              />
+              <span className="login-text4">Smart Delivery</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignupPage;
+export default Signup;

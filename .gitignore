@@ -2,3 +2,4 @@ node_modules/
 bin/
 obj/
 /back-end/.vs
+/front-end/build
