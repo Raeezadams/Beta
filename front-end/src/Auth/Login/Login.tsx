@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet'
+import useApi from '../../Shared/useapi';
+import { User, login } from '../../API/Authentification/Index';
+import { toast } from 'react-toastify';
 
 
 interface LoginProps {
@@ -9,17 +12,42 @@ interface LoginProps {
 }
 
 const LoginPage: React.FC<LoginProps> = () => {
-  const [cellNumber, setCellNumber] = useState('');
+  const navigate = useNavigate();
+  const [cellNumber, setCellNumber] = useState<number>(0);
   const [password, setPassword] = useState('');
 
   const handleCellNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCellNumber(e.target.value);
+    setCellNumber(parseInt(e.target.value));
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
+  const loginHook = useApi({
+    action: () => login({
+      userName: '',
+      email: '',
+      password: password,
+      phoneNumber: (cellNumber)
+  }),
+    defer: true,
+    onSuccess: (user: User ) => {
+      navigate("/home")
+
+      toast.success("You have logged in sucessfully")
+
+    },
+    onError: (e: any) => {
+      if(e && e.response && e.response.data && e.response.data.errorMessages)
+      {
+       e.response.data.errorMessages.forEach((message:string) => {
+         toast.error(message);
+        });
+      } 
+      else toast.error("Network Error")
+     }
+}, [])
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Perform login logic here
@@ -37,10 +65,11 @@ const LoginPage: React.FC<LoginProps> = () => {
           <h1 className="login-text1">Welcome to Smart Delivery</h1>
           <div className="login-container4">
             <input
-              type="text"
+              type="number"
               required
               placeholder="Phone number"
               className="login-textinput input"
+              onChange={handleCellNumberChange}
             />
             <input
               type="password"
@@ -48,10 +77,11 @@ const LoginPage: React.FC<LoginProps> = () => {
               autoFocus
               placeholder="Password"
               className="login-textinput1 input"
+              onChange={handlePasswordChange}
             />
-            <button type="button" className="login-button button">
-              Login
-            </button>
+            <button type="button" autoFocus className="signup-button button" onClick={() => loginHook.execute()}>
+                {loginHook.inProgress ? 'in progress' : 'Login'}
+              </button>
             <div className="login-container5">
               <span className="login-text2">
                 <Link to="/signup" className="login-navlink">

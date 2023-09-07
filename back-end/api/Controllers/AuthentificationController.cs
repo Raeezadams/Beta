@@ -34,9 +34,16 @@ public class AuthentificationController : ControllerBase
 
 
     [HttpPost("signup")]
-    public ActionResult<IOutcome<UserModel>> Post(UserModel user)
+    public ActionResult<IOutcome<UserModel>> PostSignup(UserModel user)
     {
         return _handler.HandleOutcome(_athenticationService.signup(user));
+    }
+
+
+    [HttpPost("login")]
+    public ActionResult<IOutcome<Entities.User>> PostLogin(UserModel user)
+    {
+        return _handler.HandleOutcome(_athenticationService.login(user));
     }
 }
 

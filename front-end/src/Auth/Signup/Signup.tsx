@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet'
 const Signup: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [cellNumber,setCellNumber]=useState('')
+  const [cellNumber,setCellNumber]=useState<number>(0)
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +28,7 @@ const Signup: React.FC = () => {
   };
 
   const handleCellNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCellNumber(e.target.value);
+    setCellNumber(parseInt(e.target.value));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -51,9 +51,9 @@ const Signup: React.FC = () => {
 
     },
     onError: (e: any) => {
-      if(e && e.data && e.data.errorMessages)
+      if(e && e.response && e.response.data && e.response.data.errorMessages)
       {
-       e.data.errorMessages.forEach((message:string) => {
+       e.response.data.errorMessages.forEach((message:string) => {
          toast.error(message);
         });
       } 
@@ -91,6 +91,16 @@ const Signup: React.FC = () => {
                 className="signup-textinput3 input"
                 value={email}
                 onChange={handleEmailChange}
+              />
+
+              <input
+                type="number"
+                required
+                autoFocus
+                placeholder="Cell Number"
+                className="signup-textinput3 input"
+                value={cellNumber}
+                onChange={handleCellNumberChange}
               />
               <input
                 type="password"

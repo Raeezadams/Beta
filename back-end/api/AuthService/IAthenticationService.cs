@@ -7,7 +7,8 @@ namespace api.AuthService
 	public interface IAthenticationService
 	{
         IOutcome<UserModel> signup(UserModel user);
-		List<Entities.User> getUserInfo();
+        IOutcome<Entities.User> login(UserModel user);
+        List<Entities.User> getUserInfo();
 
     }
 }
