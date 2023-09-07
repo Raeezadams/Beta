@@ -4,7 +4,7 @@ Tech stack
 
 Front end - React.js with TypeScript
 
-Back end -SP.NET Core Web API 
+Back end - SP.NET Core Web API 
 
 Database - Microsoft SQL Server
 
