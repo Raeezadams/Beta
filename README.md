@@ -10,8 +10,12 @@ Database - Microsoft SQL Server
 
 
 # Login Screen
-![image](https://github.com/Raeezadams/Beta/assets/132194664/5077c560-0c1c-40d7-bcec-e021cf2b8c60)
+
+![Screenshot 2023-09-07 185353](https://github.com/Raeezadams/Beta/assets/132194664/eeabf811-f7f9-4fa7-b04d-426af462a157)
+
 
 # SignUp Screen
-![image](https://github.com/Raeezadams/Beta/assets/132194664/57f26b15-4b95-4251-a02e-ded92cbd490c)
+
+![Screenshot 2023-09-07 185437](https://github.com/Raeezadams/Beta/assets/132194664/b0d19741-0d7d-4078-82f7-038307ccd9b8)
+
 
