@@ -35,7 +35,7 @@ const LoginPage: React.FC<LoginProps> = () => {
     onSuccess: (user: User ) => {
       navigate("/home")
 
-      toast.success("You have logged in sucessfully")
+      toast.success(`Welcome ${user.userName}`)
 
     },
     onError: (e: any) => {

@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom/client';
 import SignupPage from './Auth/Signup/signup';
 import LoginPage from './Auth/Login/login';
 import HomePage from './HomePage/HomePage';
+import ProfilePage from './ProfilePage/profile';
 import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(
@@ -20,6 +21,7 @@ root.render(
         <Route path="/" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </Router>
     <ToastContainer/>
