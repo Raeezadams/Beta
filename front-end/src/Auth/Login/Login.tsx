@@ -91,7 +91,7 @@ const LoginPage: React.FC<LoginProps> = () => {
               <span className="login-text3">Reset password </span>
             </div>
             <div className="login-profile">
-              <Link to="/" className="login-navlink">
+              <Link to="/home" className="login-navlink">
                 Home
               </Link>
             </div>

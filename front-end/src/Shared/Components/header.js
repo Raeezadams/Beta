@@ -36,7 +36,7 @@ const Header = (props) => {
 
 Header.defaultProps = {
   image_alt: 'logo',
-  image_src: '/delivery-man-riding-red-scooter-illustration_9845-14-1500w.jpg',
+  image_src: require('../../Assets/delivery-man-riding-red-scooter-illustration_9845-14-200h.jpg'),
 }
 
 Header.propTypes = {

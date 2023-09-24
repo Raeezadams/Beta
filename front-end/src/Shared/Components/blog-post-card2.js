@@ -1,16 +1,15 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
+import { CurrentUserContext } from '../DataStore'
 import PropTypes from 'prop-types'
-
 import './blog-post-card2.css'
 
-const BlogPostCard2 = (props) => {
+const BlogPostCard2 = (props) => { 
+  const {CurrentUser} = useContext(CurrentUserContext)
   return (
     <div className={`blog-post-card2-blog-post-card ${props.rootClassName} `}>
       <img
         alt={props.image_alt}
-        src={props.image_src}
-        image_src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDd8fHBvcnRyYWl0fGVufDB8fHx8MTYyNjM3ODk3Mg&amp;ixlib=rb-1.2.1&amp;h=1000"
+        src= "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDd8fHBvcnRyYWl0fGVufDB8fHx8MTYyNjM3ODk3Mg&ixlib=rb-1.2.1&h=1000"
         className="blog-post-card2-image"
       />
       <div className="blog-post-card2-container">
@@ -49,9 +48,9 @@ BlogPostCard2.defaultProps = {
   rootClassName: '',
   image_src: '/placeholder-1500w.jpg',
   text: 'Label',
-  textinput_placeholder: 'placeholder',
-  textinput_placeholder1: 'placeholder',
-  textinput_placeholder2: 'placeholder',
+  textinput_placeholder: CurrentUser.userName,
+  textinput_placeholder1: CurrentUser.email,
+  textinput_placeholder2: CurrentUser.cellNumber,
 }
 
 BlogPostCard2.propTypes = {
