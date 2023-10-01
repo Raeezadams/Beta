@@ -11,7 +11,7 @@ const Profile = (props) => {
         <meta property="og:title" content="Profile - Beta" />
       </Helmet>
       <Header></Header>
-      <BlogPostCard2>
+      <BlogPostCard2 >
       </BlogPostCard2>
     </div>
   )

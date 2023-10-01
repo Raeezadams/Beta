@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet'
 import useApi from '../../Shared/useapi';
 import { User, login } from '../../API/Authentification/Index';
 import { toast } from 'react-toastify';
+import { CurrentUserContext } from '../../DataStore';
+
 
 
 interface LoginProps {
@@ -15,7 +17,7 @@ const LoginPage: React.FC<LoginProps> = () => {
   const navigate = useNavigate();
   const [cellNumber, setCellNumber] = useState<number>(0);
   const [password, setPassword] = useState('');
-
+  const {currentUser} = useContext(CurrentUserContext);
   const handleCellNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCellNumber(parseInt(e.target.value));
   };
@@ -33,6 +35,7 @@ const LoginPage: React.FC<LoginProps> = () => {
   }),
     defer: true,
     onSuccess: (user: User ) => {
+      currentUser.current = user;
       navigate("/home")
 
       toast.success(`Welcome ${user.userName}`)

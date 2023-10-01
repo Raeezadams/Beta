@@ -9,6 +9,7 @@ import LoginPage from './Auth/Login/login';
 import HomePage from './HomePage/HomePage';
 import ProfilePage from './ProfilePage/profile';
 import { ToastContainer } from 'react-toastify';
+import DataStore from '../src/DataStore'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,6 +17,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <DataStore>
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
@@ -25,6 +27,7 @@ root.render(
       </Routes>
     </Router>
     <ToastContainer/>
+   </DataStore>
   </React.StrictMode>
 );
 
