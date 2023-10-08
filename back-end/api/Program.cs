@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<IAthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IHandler, Handler>();
 
-var connectionString = "Server=localhost;Database=smartservices;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True";
+var connectionString = "Server=localhost;Database=SmartService;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True";
 builder.Services.AddDbContext<APIDbContext>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();

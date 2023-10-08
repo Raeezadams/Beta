@@ -1,8 +1,11 @@
+import 'react-toastify/dist/ReactToastify.css';
+import './style.css'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
-import './style.css'
 import Outsourcing from './views/outsourcing'
 import SoftwareDevelopment from './views/software-development'
 import Consulting from './views/consulting'
@@ -23,15 +26,16 @@ const root = ReactDOM.createRoot(
 const App = () => {
   return (
     <Router>
-    <DataStore>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/catalogue" element={<Catalogue />} />
-      </Routes>
+      <DataStore>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/catalogue" element={<Catalogue />} />
+        </Routes>
       </DataStore>
+      <ToastContainer/>
     </Router>
   )
 }

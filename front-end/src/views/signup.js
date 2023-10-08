@@ -1,11 +1,67 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-import { Helmet } from 'react-helmet'
-
 import './signup.css'
 
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet'
+import {toast} from "react-toastify";
+
+import useApi from '../Shared/useapi';
+import { signup as signupApi } from '../API/Authentification/Index';
+
 const Signup = (props) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [cellNumber,setCellNumber]=useState(0)
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleCellNumberChange = (e) => {
+    setCellNumber(parseInt(e.target.value));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform signup logic here
+  };
+
+  const signupHook = useApi({
+    action: () => signupApi({
+      userName: username,
+      email: email,
+      password: password,
+      phoneNumber: (cellNumber)
+  }),
+    defer: true,
+    onSuccess: (user ) => {
+
+      localStorage.setItem('betaUser', JSON.stringify(user));
+      
+      navigate("/home")
+
+      toast.success("You have signed up sucessfully")
+
+    },
+    onError: (e) => {
+      if(e && e.response && e.response.data && e.response.data.errorMessages)
+      {
+       e.response.data.errorMessages.forEach((message) => {
+         toast.error(message);
+        });
+      } 
+      else toast.error("Network Error")
+     }
+}, [])
   return (
     <div className="signup-container">
       <Helmet>
@@ -16,29 +72,17 @@ const Signup = (props) => {
         <div className="signup-container2"></div>
         <div className="signup-container3">
           <h1 className="signup-text">Create Account</h1>
-          <h1 className="signup-text1">Welcome to Target Online Pty Ltd</h1>
+          <h1 className="signup-text1">Welcome to Smart Delivery</h1>
           <div className="signup-container4">
             <div className="signup-container5">
               <input
                 type="text"
                 required
                 autoFocus
-                placeholder="First name"
+                placeholder="User name"
                 className="signup-textinput input"
-              />
-              <input
-                type="text"
-                required
-                autoFocus
-                placeholder="Last name"
-                className="signup-textinput1 input"
-              />
-              <input
-                type="text"
-                required
-                autoFocus
-                placeholder="Phone number"
-                className="signup-textinput2 input"
+                value={username}
+                onChange={handleUsernameChange}
               />
               <input
                 type="email"
@@ -46,6 +90,17 @@ const Signup = (props) => {
                 autoFocus
                 placeholder="Email"
                 className="signup-textinput3 input"
+                value={email}
+                onChange={handleEmailChange}
+              />
+              <input
+                type="number"
+                required
+                autoFocus
+                placeholder="Cell Number"
+                className="signup-textinput3 input"
+                value={cellNumber}
+                onChange={handleCellNumberChange}
               />
               <input
                 type="password"
@@ -53,13 +108,15 @@ const Signup = (props) => {
                 autoFocus
                 placeholder="Password"
                 className="signup-textinput4 input"
+                value={password}
+                onChange={handlePasswordChange}
               />
-              <button type="button" autoFocus className="signup-button button">
-                Create account
+              <button type="button" autoFocus className="signup-button button" onClick={() => signupHook.execute()}>
+                {signupHook.inProgress ? 'in progress' : 'Sign Up'}
               </button>
             </div>
             <div className="signup-container6">
-              <Link to="/login" className="signup-navlink">
+              <Link to="/" className="signup-navlink">
                 Login
               </Link>
             </div>
@@ -71,10 +128,10 @@ const Signup = (props) => {
             <div className="signup-profile1">
               <img
                 alt="profile"
-                src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/0c644282-2675-40e3-b1f6-d5c6c98aaa81/8a36294c-7fa8-440e-8f27-65b41582cf17?org_if_sml=118130"
+                src= {require("../Assets/delivery-man-riding-red-scooter-illustration_9845-14-200h.jpg")}
                 className="signup-image"
               />
-              <span className="signup-text3">Target Online Pty Ltd</span>
+              <span className="login-text3">Smart Delivery</span>
             </div>
           </div>
         </div>

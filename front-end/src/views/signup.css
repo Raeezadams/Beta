@@ -45,7 +45,7 @@
   width: 100%;
   font-size: 15px;
   font-style: normal;
-  margin-top: 10vh;
+  margin-top: 5vh;
   text-align: center;
   font-weight: 100;
 }
@@ -67,6 +67,7 @@
   align-items: flex-start;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 34vh;
 }
 .signup-textinput {
   width: 100%;
