@@ -3,3 +3,5 @@ bin/
 obj/
 /back-end/.vs
 /front-end/build
+/back-end/api/.vs
+/back-end/api/obj
