@@ -15,6 +15,7 @@ const BlogPostCard2 = (props) => {
     //if (currentUser.current.userName == 'Default') navigate('/')
   },[])
  
+  
   return (
     <div className={`blog-post-card2-blog-post-card ${props.rootClassName} `}>
     <img

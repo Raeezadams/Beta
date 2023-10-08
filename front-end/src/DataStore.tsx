@@ -2,8 +2,12 @@ import React, { createContext, useRef } from 'react';
 export const CurrentUserContext = createContext<any>({})
 
 export default function Store(props: any) {
-	const localStorageUser : string | null = localStorage.getItem('targetOnlineUser');
-    const defaultUser = {userName: "Default"}
+	const localStorageUser : string | null = localStorage.getItem('betaUser');
+    const defaultUser = { 
+		userName: "Username",
+		emailAddress: 'Email',
+		phoneNumber: 'Phonenumber'
+	}
 	const currentUser = useRef<any>(localStorageUser == null ?  defaultUser : JSON.parse(localStorageUser!));
 
 	return (
