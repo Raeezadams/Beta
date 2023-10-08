@@ -32,7 +32,7 @@ const BlogPostCard2 = (props) => {
         <div className="blog-post-card2-container2">
           <span className="blog-post-card2-text3">Email</span>
         </div>
-        <span>{currentUser.current.emailAddress}</span>
+        <span>{currentUser.current.email}</span>
         <div className="blog-post-card2-container3">
           <span className="blog-post-card2-text5">Cell Number</span>
         </div>

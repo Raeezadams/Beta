@@ -5,7 +5,7 @@ export default function Store(props: any) {
 	const localStorageUser : string | null = localStorage.getItem('betaUser');
     const defaultUser = { 
 		userName: "Username",
-		emailAddress: 'Email',
+		email: 'Email',
 		phoneNumber: 'Phonenumber'
 	}
 	const currentUser = useRef<any>(localStorageUser == null ?  defaultUser : JSON.parse(localStorageUser!));
