@@ -1,4 +1,4 @@
-import '../src/style.css'
+import './style.css'
 import 'react-toastify/dist/ReactToastify.css';
 
 import React from 'react';
@@ -10,9 +10,10 @@ import HomePage from './HomePage/HomePage';
 import ProfilePage from './ProfilePage/profile';
 import { ToastContainer } from 'react-toastify';
 import DataStore from '../src/DataStore'
+import Catalogue from '../src/CataloguePage/Catalogue';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('app') as HTMLElement
 );
 
 root.render(
@@ -24,6 +25,7 @@ root.render(
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/catalogue" element={<Catalogue />} />
       </Routes>
     </Router>
     <ToastContainer/>

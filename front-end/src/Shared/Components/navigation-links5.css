@@ -7,13 +7,14 @@
 .navigation-links5-text1 {
   margin-left: var(--dl-space-space-twounits);
 }
+.navigation-links5-navlink {
+  margin-left: var(--dl-space-space-twounits);
+  text-decoration: none;
+}
 .navigation-links5-text2 {
   margin-left: var(--dl-space-space-twounits);
 }
-.navigation-links5-text3 {
-  margin-left: var(--dl-space-space-twounits);
-}
-.navigation-links5-navlink {
+.navigation-links5-navlink1 {
   margin-left: var(--dl-space-space-twounits);
   text-decoration: none;
 }
@@ -37,15 +38,15 @@
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
+  .navigation-links5-navlink {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
   .navigation-links5-text2 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
-  .navigation-links5-text3 {
-    margin-left: 0;
-    margin-bottom: var(--dl-space-space-unit);
-  }
-  .navigation-links5-navlink {
+  .navigation-links5-navlink1 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
