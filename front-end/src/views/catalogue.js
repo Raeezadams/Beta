@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 
@@ -7,6 +7,7 @@ import GalleryCard1 from '../components/gallery-card1'
 import './catalogue.css'
 
 const Catalogue = (props) => {
+var [image, setImage] = useState('https://play.teleporthq.io/static/svg/default-img.svg');
   return (
     <div className="catalogue-container">
       <Helmet>
@@ -72,10 +73,31 @@ const Catalogue = (props) => {
             </div>
           </div>
           <div className="catalogue-container10">
+          <label htmlFor = "file-input">
             <img
+              src= {image}
               alt="image"
-              src="https://play.teleporthq.io/static/svg/default-img.svg"
               className="catalogue-image"
+            /></label>
+             <input
+              id="file-input"
+              type="file"
+              alt = "image"
+              accept = "image/*"
+              style = {{display : "none"}}
+              placeholder="Item"
+              onChange={e => {
+                const selectFile = e.target.files[0];
+
+                if(selectFile instanceof Blob){
+                  const reader = new FileReader();
+                  reader.onload = e => {
+                    setImage(e.target.result)
+                  };
+                  reader.readAsDataURL(selectFile);
+                }
+                
+              }}
             />
             <input
               type="text"

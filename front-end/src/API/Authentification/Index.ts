@@ -4,7 +4,7 @@ export const apiBaseUrl: string = "http://localhost:5187";
 
 export type User = {
     userName: string;
-    phoneNumber: number;
+    phoneNumber: number | null;
     password: string;
     email: string;
 }
