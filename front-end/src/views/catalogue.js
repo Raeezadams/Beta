@@ -5,9 +5,39 @@ import { Helmet } from 'react-helmet'
 import Header from '../components/header'
 import GalleryCard1 from '../components/gallery-card1'
 import './catalogue.css'
+import { Product, addProduct } from '../API/Authentification/Index'
+import useApi from '../Shared/useapi';
+
 
 const Catalogue = (props) => {
 var [image, setImage] = useState('https://play.teleporthq.io/static/svg/default-img.svg');
+const [isVisible, toggleIsVisible] = useState(false)
+const [product, setProduct] = useState({
+  productName: "",
+  price: 0,
+  description: "",
+  quantity: 0,
+  productImg: image,
+})
+
+const productHook = useApi({
+  action: () => addProduct(product),
+  defer: true,
+  onSuccess: (product) => {
+   
+    toast.success(` ${product.productName} sucessfully added`)
+
+  },
+  onError: (e) => {
+    if(e && e.response && e.response.data && e.response.data.errorMessages)
+    {
+     e.response.data.errorMessages.forEach((message) => {
+       toast.error(message);
+      });
+    } 
+    else toast.error("Network Error")
+   }
+}, [])
   return (
     <div className="catalogue-container">
       <Helmet>
@@ -54,12 +84,12 @@ var [image, setImage] = useState('https://play.teleporthq.io/static/svg/default-
         ></GalleryCard1>
       </div>
       <div className="catalogue-container01">
-        <svg viewBox="0 0 1024 1024" className="catalogue-icon">
+        <svg viewBox="0 0 1024 1024" className="catalogue-icon" onClick={()=> toggleIsVisible(true)}>
           <path d="M384 736c0-151.234 95.874-280.486 230.032-330.2 16.28-36.538 25.968-77.164 25.968-117.8 0-159.058 0-288-192-288s-192 128.942-192 288c0 99.060 57.502 198.104 128 237.832v52.78c-217.102 17.748-384 124.42-384 253.388h397.306c-8.664-30.53-13.306-62.732-13.306-96z"></path>
           <path d="M736 448c-159.058 0-288 128.942-288 288s128.942 288 288 288c159.056 0 288-128.942 288-288s-128.942-288-288-288zM896 768h-128v128h-64v-128h-128v-64h128v-128h64v128h128v64z"></path>
         </svg>
       </div>
-      <div className="catalogue-container02">
+      <div className="catalogue-container02" style={{display: isVisible ? 'flex' : 'none'}}>
         <div className="catalogue-container03">
           <div className="catalogue-container04">
             <div className="catalogue-container05">
@@ -101,7 +131,7 @@ var [image, setImage] = useState('https://play.teleporthq.io/static/svg/default-
             />
             <input
               type="text"
-              placeholder="Item"
+              placeholder="Product Name"
               className="catalogue-input input"
             />
             <input
@@ -110,15 +140,21 @@ var [image, setImage] = useState('https://play.teleporthq.io/static/svg/default-
               className="catalogue-input1 input"
             />
             <input
+              type="number"
+              placeholder="Quantity"
+              className="catalogue-input input"
+            />
+            <input
               type="text"
               placeholder="Description"
               className="catalogue-input2 input"
             />
+            
             <div className="catalogue-container11">
-              <button type="button" className="catalogue-button button">
+              <button type="button" className="catalogue-button button" onClick={()=> toggleIsVisible(false)}>
                 Cancel
               </button>
-              <button type="button" className="catalogue-button1 button">
+              <button type="button" className="catalogue-button1 button" onClick={()=> console.log(product)}> 
                 Confirm
               </button>
             </div>

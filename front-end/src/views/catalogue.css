@@ -18,13 +18,13 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 .catalogue-container01 {
-  top: 200;
+  top: 23px;
   right: 50px;
   width: 100px;
   height: 50px;
   display: flex;
   z-index: 1;
-  position: fixed;
+  position: absolute;
   align-items: flex-start;
   flex-direction: column;
 }
@@ -130,7 +130,6 @@
 .catalogue-input2 {
   width: 421px;
   height: 109px;
-  margin: var(--dl-space-space-twounits);
   flex-wrap: initial;
 }
 .catalogue-container11 {
@@ -140,12 +139,17 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  margin-top: 10px;
 }
 .catalogue-button {
   margin-right: var(--dl-space-space-threeunits);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
 }
 .catalogue-button1 {
   margin-left: var(--dl-space-space-threeunits);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
 }
 @media(max-width: 991px) {
   .catalogue-gallery {
