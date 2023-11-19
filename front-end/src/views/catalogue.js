@@ -7,27 +7,24 @@ import GalleryCard1 from '../components/gallery-card1'
 import './catalogue.css'
 import { Product, addProduct } from '../API/Authentification/Index'
 import useApi from '../Shared/useapi';
+import { toast } from 'react-toastify';
 
 
 const Catalogue = (props) => {
 var [image, setImage] = useState('https://play.teleporthq.io/static/svg/default-img.svg');
 const [isVisible, toggleIsVisible] = useState(false)
 const [product, setProduct] = useState({
-  productName: "",
+  name: "",
   price: 0,
   description: "",
   quantity: 0,
-  productImg: image,
+  image: image,
 })
 
 const productHook = useApi({
-  action: () => addProduct(product),
+  action: (product) => addProduct(product),
   defer: true,
-  onSuccess: (product) => {
-   
-    toast.success(` ${product.productName} sucessfully added`)
-
-  },
+  onSuccess: (product) => toast.success(` ${product.productName} sucessfully added`),
   onError: (e) => {
     if(e && e.response && e.response.data && e.response.data.errorMessages)
     {
@@ -119,6 +116,11 @@ const productHook = useApi({
               onChange={e => {
                 const selectFile = e.target.files[0];
 
+                setProduct({
+                  ...product,
+                  image: selectFile
+                })
+
                 if(selectFile instanceof Blob){
                   const reader = new FileReader();
                   reader.onload = e => {
@@ -133,29 +135,60 @@ const productHook = useApi({
               type="text"
               placeholder="Product Name"
               className="catalogue-input input"
+              onChange={(event) => setProduct({
+                ...product,
+                name: event.currentTarget.value
+              })}
+
             />
             <input
               type="text"
               placeholder="Price"
               className="catalogue-input1 input"
+              onChange={(event) => setProduct({
+                ...product,
+                price: event.currentTarget.value
+              })}
             />
             <input
               type="number"
               placeholder="Quantity"
               className="catalogue-input input"
+              onChange={(event) => setProduct({
+                ...product,
+                quantity: event.currentTarget.value
+              })}
             />
             <input
               type="text"
               placeholder="Description"
               className="catalogue-input2 input"
+              onChange={(event) => setProduct({
+                ...product,
+                description: event.currentTarget.value
+              })}
             />
             
             <div className="catalogue-container11">
               <button type="button" className="catalogue-button button" onClick={()=> toggleIsVisible(false)}>
                 Cancel
               </button>
-              <button type="button" className="catalogue-button1 button" onClick={()=> console.log(product)}> 
-                Confirm
+              <button type="button" className="catalogue-button1 button" onClick={()=> {
+                const formData = new FormData();
+                formData.append('name', product.name)
+                formData.append('price', product.price)
+                formData.append('quantity', product.quantity)
+                formData.append('description', product.description)
+                formData.append('image', product.image)
+
+                for (var pair of formData.entries()) {
+                  console.log(pair[0]+ ', ' + pair[1]); 
+                }
+
+                productHook.execute(formData)
+              
+              }}> 
+               {productHook.inProgress ? "In Progress" :  "Confirm"}
               </button>
             </div>
           </div>

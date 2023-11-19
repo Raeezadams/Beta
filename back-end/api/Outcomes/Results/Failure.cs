@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SmartAutoSpares.Outcomes.Results
+namespace SmartService.Outcomes.Results
 {
     public class Failure : IOutcome
     {

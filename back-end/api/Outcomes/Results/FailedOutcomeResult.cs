@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SmartAutoSpares.Outcomes.Results
+namespace SmartService.Outcomes.Results
 {
     public class FailedOutcomeResult : ObjectResult
     {

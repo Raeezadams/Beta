@@ -1,7 +1,8 @@
 ﻿using api.AuthService;
 using api.Context;
+using api.Services.Products;
 using Microsoft.EntityFrameworkCore;
-using SmartAutoSpares.Outcomes;
+using SmartService.Outcomes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddCors(options =>
     });
 });
 builder.Services.AddScoped<IAthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IProductsService, ProductsService>();
 builder.Services.AddScoped<IHandler, Handler>();
 
 var connectionString = "Server=localhost;Database=smartservices;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True";

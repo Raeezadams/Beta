@@ -1,8 +1,8 @@
 ﻿using api.AuthService;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
-using SmartAutoSpares.Outcomes;
-using SmartAutoSpares.Outcomes.Results;
+using SmartService.Outcomes;
+using SmartService.Outcomes.Results;
 
 namespace api.Controllers;
 

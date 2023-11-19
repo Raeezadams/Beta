@@ -22,5 +22,5 @@ export type Product = {
 export const signup = (user:User) => axios.post(`${apiBaseUrl}/Authentification/signup`, user).then(response => response.data)
 export const login = (user:User) => axios.post(`${apiBaseUrl}/Authentification/login`, user).then(response => response.data)
 
-export const addProduct = (product:Product) => axios.post(`${apiBaseUrl}/products`, product).then(response => response.data)
+export const addProduct = (product: FormData) => axios.post(`${apiBaseUrl}/products`, product).then(response => response.data)
 

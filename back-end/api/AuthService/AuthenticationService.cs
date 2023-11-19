@@ -1,7 +1,7 @@
 ﻿using System;
 using api.Context;
 using api.Models;
-using SmartAutoSpares.Outcomes.Results;
+using SmartService.Outcomes.Results;
 
 namespace api.AuthService
 {

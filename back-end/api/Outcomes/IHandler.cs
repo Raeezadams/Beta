@@ -1,7 +1,7 @@
-﻿using SmartAutoSpares.Outcomes.Results;
+﻿using SmartService.Outcomes.Results;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SmartAutoSpares.Outcomes
+namespace SmartService.Outcomes
 {
     public interface IHandler
     {

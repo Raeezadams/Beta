@@ -1,4 +1,4 @@
-﻿namespace SmartAutoSpares.Outcomes.Results
+﻿namespace SmartService.Outcomes.Results
 {
     public interface IOutcome
     {
