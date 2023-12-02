@@ -5,11 +5,13 @@ import { Helmet } from 'react-helmet'
 import Header from '../components/header'
 import GalleryCard1 from '../components/gallery-card1'
 import './catalogue.css'
-import { Product, addProduct } from '../API/Authentification/Index'
+import { addProduct } from '../API/Authentification/Index'
 import useApi from '../Shared/useapi';
+import {toast} from "react-toastify";
 
 
 const Catalogue = (props) => {
+const formdata = new FormData();
 var [image, setImage] = useState('https://play.teleporthq.io/static/svg/default-img.svg');
 const [isVisible, toggleIsVisible] = useState(false)
 const [product, setProduct] = useState({
@@ -119,10 +121,15 @@ const productHook = useApi({
               onChange={e => {
                 const selectFile = e.target.files[0];
 
+                setProduct({
+                  ...product,
+                  productImg: selectFile
+                })
+
                 if(selectFile instanceof Blob){
                   const reader = new FileReader();
                   reader.onload = e => {
-                    setImage(e.target.result)
+                    setImage(e.target.result)                    
                   };
                   reader.readAsDataURL(selectFile);
                 }
@@ -133,29 +140,56 @@ const productHook = useApi({
               type="text"
               placeholder="Product Name"
               className="catalogue-input input"
+              onChange={(event)=> setProduct({
+                ...product,
+                productName: event.currentTarget.value
+              })}
             />
             <input
               type="text"
               placeholder="Price"
               className="catalogue-input1 input"
+              onChange={(event)=> setProduct({
+                ...product,
+                price: event.currentTarget.value
+              })}
             />
             <input
               type="number"
               placeholder="Quantity"
               className="catalogue-input input"
+              onChange={(event)=> setProduct({
+                ...product,
+                quantity: event.currentTarget.value
+              })}
             />
             <input
               type="text"
               placeholder="Description"
               className="catalogue-input2 input"
+              onChange={(event)=> setProduct({
+                ...product,
+                description: event.currentTarget.value
+              })}
             />
             
             <div className="catalogue-container11">
               <button type="button" className="catalogue-button button" onClick={()=> toggleIsVisible(false)}>
                 Cancel
               </button>
-              <button type="button" className="catalogue-button1 button" onClick={()=> console.log(product)}> 
-                Confirm
+              <button type="button" className="catalogue-button1 button" onClick={()=> {
+                
+                formdata.append("productName", product.productName)
+                formdata.append("Price", product.price)
+                formdata.append("Qauntity", product.quantity)
+                formdata.append("Description", product.description)
+                formdata.append("file", product.productImg)
+
+                console.log("form-data", formdata)
+
+                productHook.execute(formdata)
+              }}> 
+                {productHook.inProgress ? 'In Progress' : 'Confirm'}
               </button>
             </div>
           </div>

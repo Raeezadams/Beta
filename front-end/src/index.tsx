@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import SignupPage from '../src/views/signup';
 import LoginPage from '../src/views/login';
-import HomePage from './HomePage/HomePage';
-import ProfilePage from './ProfilePage/profile';
+import HomePage from './views/home';
+import ProfilePage from './views/profile';
 import { ToastContainer } from 'react-toastify';
 import DataStore from '../src/DataStore'
-import Catalogue from '../src/views/catalogue';
+import Catalogue from './views/catalogue';
 
 const root = ReactDOM.createRoot(
   document.getElementById('app') as HTMLElement
