@@ -1,4 +1,5 @@
 ﻿using api.Context;
+using api.Entities;
 using ServiceLayer;
 using SmartService.Outcomes.Results;
 using SmartService.Services.Utils;
@@ -27,10 +28,16 @@ namespace api.Services.Products
 
                 BlobStorageService objBlobService = new BlobStorageService(_configuration);
 
-                
+
                 var imageUrl = objBlobService.UploadFileToBlob(file.FileName, fileData, mimeType);
 
-         
+
+                var product = new Product()
+                {
+                    Name = httpRequest.Form["name"].ToString(),
+                    Price = int.Parse(httpRequest.Form["price"]),
+                    Image = imageUrl,
+                }
 
                 return new Success<Models.Product>();
             }
