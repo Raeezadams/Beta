@@ -181,10 +181,6 @@ const productHook = useApi({
                 formData.append('description', product.description)
                 formData.append('image', product.image)
 
-                for (var pair of formData.entries()) {
-                  console.log(pair[0]+ ', ' + pair[1]); 
-                }
-
                 productHook.execute(formData)
               
               }}> 
