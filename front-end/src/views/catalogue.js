@@ -24,7 +24,7 @@ const [product, setProduct] = useState({
 const productHook = useApi({
   action: (product) => addProduct(product),
   defer: true,
-  onSuccess: (product) => toast.success(` ${product.productName} sucessfully added`),
+  onSuccess: (product) => toast.success(` ${product.name} sucessfully added`),
   onError: (e) => {
     if(e && e.response && e.response.data && e.response.data.errorMessages)
     {
@@ -35,6 +35,9 @@ const productHook = useApi({
     else toast.error("Network Error")
    }
 }, [])
+
+
+console.log("product", product)
   return (
     <div className="catalogue-container">
       <Helmet>
@@ -180,14 +183,10 @@ const productHook = useApi({
                 formData.append('quantity', product.quantity)
                 formData.append('description', product.description)
                 formData.append('image', product.image)
-
-                for (var pair of formData.entries()) {
-                  console.log(pair[0]+ ', ' + pair[1]); 
-                }
-
                 productHook.execute(formData)
               
-              }}> 
+              }}
+              disabled={product.name == "" || product.price == 0 || product.quantity == 0 || product.description =="" || product.image == ""}> 
                {productHook.inProgress ? "In Progress" :  "Confirm"}
               </button>
             </div>
