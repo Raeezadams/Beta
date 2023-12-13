@@ -182,7 +182,7 @@ console.log("product", product)
                 formData.append('price', product.price)
                 formData.append('quantity', product.quantity)
                 formData.append('description', product.description)
-                formData.append('image', product.image)
+                formData.append('image', product.image)   
                 productHook.execute(formData)
               
               }}
