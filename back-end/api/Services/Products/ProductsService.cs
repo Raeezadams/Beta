@@ -16,6 +16,11 @@ namespace api.Services.Products
             _configuration = configuration;
         }
 
+        public List<Entities.Product> GetProducts()
+        {
+            return _dbContext.Products.ToList();
+        }
+
         public async Task<IOutcome<Models.Product>> AddProduct(HttpRequest httpRequest)
         {
             try

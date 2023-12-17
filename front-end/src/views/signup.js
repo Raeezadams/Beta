@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet'
 import {toast} from "react-toastify";
-
 import useApi from '../Shared/useapi';
 import { signup as signupApi } from '../API/Authentification/Index';
 
@@ -48,6 +47,7 @@ const Signup = (props) => {
       localStorage.setItem('betaUser', JSON.stringify(user));
       
       navigate("/home")
+      location.reload();
 
       toast.success("You have signed up sucessfully")
 

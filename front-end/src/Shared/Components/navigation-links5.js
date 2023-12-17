@@ -13,7 +13,9 @@ const NavigationLinks5 = (props) => {
       <Link to="/catalogue" className="navigation-links5-navlink">
         {props.text2}
       </Link>
-      <span className="navigation-links5-text2">{props.text3}</span>
+      <Link to="/" className="navigation-links5-navlink1">
+        {"logout"}
+      </Link>
       <Link to="/profile" className="navigation-links5-navlink1">
         {props.text31}
       </Link>
@@ -26,7 +28,7 @@ NavigationLinks5.defaultProps = {
   rootClassName: '',
   text2: 'Catalogue',
   text4: 'Blog',
-  text3: 'Team',
+  text3: 'Logout',
   text1: 'Features',
   text31: 'Profile',
 }

@@ -26,7 +26,15 @@ public class ProductsController : ControllerBase
     {
         return _handler.HandleOutcome(await _productsService.AddProduct(Request));
     }
+
+
+    [HttpGet]
+    public List<Entities.Product> GetProducts()
+    {
+        return _productsService.GetProducts();
+    }
 }
+
 
 
 

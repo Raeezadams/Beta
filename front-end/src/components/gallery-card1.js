@@ -6,7 +6,7 @@ import './gallery-card1.css'
 
 const GalleryCard1 = (props) => {
   return (
-    <div className={`gallery-card1-gallery-card ${props.rootClassName} `}>
+    <div title={props.description} className={`gallery-card1-gallery-card ${props.rootClassName} `}>
       <img
         alt={props.image_alt}
         src={props.image_src}

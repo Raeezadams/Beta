@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 
@@ -8,9 +8,12 @@ import './catalogue.css'
 import { Product, addProduct } from '../API/Authentification/Index'
 import useApi from '../Shared/useapi';
 import { toast } from 'react-toastify';
+import { getProducts } from '../API/Products/Index'
+import { CurrentUserContext } from '../DataStore'
 
 
 const Catalogue = (props) => {
+const { currentUser } = useContext(CurrentUserContext)
 var [image, setImage] = useState('https://play.teleporthq.io/static/svg/default-img.svg');
 const [isVisible, toggleIsVisible] = useState(false)
 const [product, setProduct] = useState({
@@ -21,10 +24,14 @@ const [product, setProduct] = useState({
   image: image,
 })
 
-const productHook = useApi({
+const addProductHook = useApi({
   action: (product) => addProduct(product),
   defer: true,
-  onSuccess: (product) => toast.success(` ${product.name} sucessfully added`),
+  onSuccess: (product) => {
+    toggleIsVisible(false)
+    toast.success(` ${product.name} sucessfully added`)
+    location.reload();
+  },
   onError: (e) => {
     if(e && e.response && e.response.data && e.response.data.errorMessages)
     {
@@ -36,6 +43,26 @@ const productHook = useApi({
    }
 }, [])
 
+const getProductHook = useApi({
+  action: () => getProducts(),
+  data : [],
+  onError: (e) => {
+    console.log("error", e)
+
+    if(e && e.response && e.response.data && e.response.data.errorMessages)
+    {
+     e.response.data.errorMessages.forEach((message) => {
+       toast.error(message);
+      });
+    } 
+    else toast.error("Network Error")
+   }
+}, [])
+
+console.log("Products", getProductHook.data)
+
+
+
 
 console.log("product", product)
   return (
@@ -46,48 +73,28 @@ console.log("product", product)
       </Helmet>
       <Header></Header>
       <div className="catalogue-gallery">
-        <GalleryCard1
-          title="Leather Shoe"
-          subtitle="R300"
-          image_src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDF8fGxlYXRoZXIlMjBzaG9lfGVufDB8fHx8MTY5NTQ4NDQzN3ww&amp;ixlib=rb-4.0.3&amp;h=1500"
-          rootClassName="rootClassName3"
-        ></GalleryCard1>
-        <GalleryCard1
-          title="Canvas Shoe"
-          subtitle="R200"
-          image_src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDZ8fGNhbnZhcyUyMHNob2V8ZW58MHx8fHwxNjk1NDg0NDYxfDA&amp;ixlib=rb-4.0.3&amp;h=1500"
-          rootClassName="rootClassName4"
-        ></GalleryCard1>
-        <GalleryCard1
-          title="Flyknit "
-          subtitle="R250"
-          image_src="https://images.unsplash.com/photo-1505874462322-dfcf87f819a9?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDIxfHxjb3JrJTIwc2hvZXxlbnwwfHx8fDE2OTU0ODQ1ODF8MA&amp;ixlib=rb-4.0.3&amp;h=1500"
-          rootClassName="rootClassName5"
-        ></GalleryCard1>
-        <GalleryCard1
-          title="Flyknit "
-          subtitle="R250"
-          image_src="https://images.unsplash.com/photo-1505874462322-dfcf87f819a9?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDIxfHxjb3JrJTIwc2hvZXxlbnwwfHx8fDE2OTU0ODQ1ODF8MA&amp;ixlib=rb-4.0.3&amp;h=1500"
-          rootClassName="rootClassName"
-        ></GalleryCard1>
-        <GalleryCard1
-          title="Flyknit "
-          subtitle="R250"
-          image_src="https://images.unsplash.com/photo-1505874462322-dfcf87f819a9?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDIxfHxjb3JrJTIwc2hvZXxlbnwwfHx8fDE2OTU0ODQ1ODF8MA&amp;ixlib=rb-4.0.3&amp;h=1500"
-          rootClassName="rootClassName8"
-        ></GalleryCard1>
-        <GalleryCard1
-          title="Flyknit "
-          subtitle="R250"
-          image_src="https://images.unsplash.com/photo-1505874462322-dfcf87f819a9?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDIxfHxjb3JrJTIwc2hvZXxlbnwwfHx8fDE2OTU0ODQ1ODF8MA&amp;ixlib=rb-4.0.3&amp;h=1500"
-          rootClassName="rootClassName7"
-        ></GalleryCard1>
+
+        {
+          getProductHook.data && getProductHook.data.map((p) => 
+            <GalleryCard1
+              description= {p.description}
+              title={p.name}
+              subtitle={`R${p.price}`}
+              image_src={p.image}
+              rootClassName="rootClassName3"
+            />
+        )
+        }
+        
+        
       </div>
       <div className="catalogue-container01">
+        { currentUser.current && currentUser.current.isAdmin &&
         <svg viewBox="0 0 1024 1024" className="catalogue-icon" onClick={()=> toggleIsVisible(true)}>
           <path d="M384 736c0-151.234 95.874-280.486 230.032-330.2 16.28-36.538 25.968-77.164 25.968-117.8 0-159.058 0-288-192-288s-192 128.942-192 288c0 99.060 57.502 198.104 128 237.832v52.78c-217.102 17.748-384 124.42-384 253.388h397.306c-8.664-30.53-13.306-62.732-13.306-96z"></path>
           <path d="M736 448c-159.058 0-288 128.942-288 288s128.942 288 288 288c159.056 0 288-128.942 288-288s-128.942-288-288-288zM896 768h-128v128h-64v-128h-128v-64h128v-128h64v128h128v64z"></path>
         </svg>
+        }
       </div>
       <div className="catalogue-container02" style={{display: isVisible ? 'flex' : 'none'}}>
         <div className="catalogue-container03">
@@ -183,11 +190,11 @@ console.log("product", product)
                 formData.append('quantity', product.quantity)
                 formData.append('description', product.description)
                 formData.append('image', product.image)   
-                productHook.execute(formData)
-              
+                addProductHook.execute(formData)
+                
               }}
               disabled={product.name == "" || product.price == 0 || product.quantity == 0 || product.description =="" || product.image == ""}> 
-               {productHook.inProgress ? "In Progress" :  "Confirm"}
+               {addProductHook.inProgress ? "In Progress" :  "Confirm"}
               </button>
             </div>
           </div>

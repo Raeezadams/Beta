@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 
 import './navigation-links5.css'
 
 const NavigationLinks5 = (props) => {
+  const navigate = useNavigate();
   return (
     <nav className={`navigation-links5-nav ${props.rootClassName} `}>
       <span className="navigation-links5-text">{props.text}</span>
@@ -13,10 +14,14 @@ const NavigationLinks5 = (props) => {
       <Link to="/catalogue" className="navigation-links5-navlink">
         {props.text2}
       </Link>
-      <span className="navigation-links5-text2">{props.text3}</span>
       <Link to="/profile" className="navigation-links5-navlink1">
         {props.text31}
       </Link>
+      <Link className="navigation-links5-navlink" onClick={() => {
+        localStorage.removeItem("betaUser");
+        navigate("/") 
+        location.reload();
+      } } >{"Logout"}</Link>
     </nav>
   )
 }

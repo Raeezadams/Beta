@@ -6,10 +6,10 @@ export default function Store(props: any) {
     const defaultUser = { 
 		userName: "Username",
 		email: 'Email',
-		phoneNumber: 'Phonenumber'
+		phoneNumber: 'Phonenumber',
+		isAdmin: false
 	}
 	const currentUser = useRef<any>(localStorageUser == null ?  defaultUser : JSON.parse(localStorageUser!));
-
 	return (
 		<CurrentUserContext.Provider value={{ currentUser }}>
 			{props.children}
