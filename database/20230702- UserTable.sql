@@ -27,3 +27,8 @@ Image VARCHAR(MAX) NOT NULL,
 CONSTRAINT PK_Product
 PRIMARY KEY (ID)
 )
+
+IF NOT EXISTS (SELECT * FROM sys.all_columns WHERE Name = N'IsAdmin' AND OBJECT_ID = OBJECT_ID('ss.User', 'U'))
+BEGIN
+	ALTER TABLE ss.[User] add [IsAdmin] BIT NOT NULL default 'FALSE';
+END
