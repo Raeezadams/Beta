@@ -2,13 +2,16 @@
 namespace api.Entities
 {
 
-    public class Product    
+    public class Cart    
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Price { get; set; }
-        public int Quantity { get; set; }
-        public string Description { get; set; }
-        public string Image { get; set; }
+        public int UserId { get; set; }
+        public int Total{ get; set; }
+
+        public List <Product> Products { get; set; }
+
+        public Cart()
+        {
+            Products = new List<Product>();
+        }
     }
 }

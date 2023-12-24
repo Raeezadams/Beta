@@ -18,7 +18,35 @@
 }
 .gallery-card1-text1 {
   color: #595959;
+  padding-bottom: var(--dl-space-space-unit);
   align-self: flex-start;
+}
+.gallery-card1-container {
+  flex: 0 0 auto;
+  width: 100%;
+  border: 2px solid green;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.gallery-card1-text2 {
+  color: green;
+  width: 100%;
+  height: fit-content;
+  padding: var(--dl-space-space-halfunit);
+  font-size: 18px;
+  font-style: normal;
+  text-align: center;
+  transition: 0.3s;
+  align-items: center;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.gallery-card1-text2:hover {
+  color: var(--dl-color-scheme-white);
+  background-color: green;
 }
 
 

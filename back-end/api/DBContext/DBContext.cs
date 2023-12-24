@@ -10,7 +10,7 @@ namespace api.Context
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<Cart> CartItems { get; set; }
         public APIDbContext(DbContextOptions<APIDbContext> options) : base(options)
         {
         }
@@ -27,6 +27,11 @@ namespace api.Context
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("Product", "ss");
+            });
+
+            modelBuilder.Entity<Cart>(entity =>
+            {
+                entity.ToTable("Cart", "ss");
             });
         }
     }

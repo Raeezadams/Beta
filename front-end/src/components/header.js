@@ -4,15 +4,18 @@ import PropTypes from 'prop-types'
 
 import NavigationLinks5 from './navigation-links5'
 import './header.css'
+import { Link } from 'react-router-dom'
 
 const Header = (props) => {
   return (
     <header data-role="Accordion" className="header-header">
-      <img
+      <Link to = "/home" ><img
         alt={props.image_alt}
         src={props.image_src}
         className="header-image"
       />
+      </Link>
+
       <div className="header-separator"></div>
       <nav className="header-nav">
         <NavigationLinks5
